@@ -16,8 +16,10 @@ After the simulation was completed, trajectories generated from MD simulations w
 
 （4）Calculation of the binding energy. 
 MM/GBSA (Molecular Mechanics/Generalized Born Surface Area) technique (6) implemented in AMBER18 was used to calculate the binding energy of various ligands to target protein according to the following equation: 
+
 ∆E_bind = E_complex-(E_protein+E_ligand ) 
         = ∆E_vdw+ ∆E_ele+ ∆E_GB+ ∆E_SA
+
 where ΔE_bind represents the binding energy in the solution consisting of the molecular mechanic's energy (ΔE_MM), and the solvation energy containing polar contribution (ΔE_GB) and nonpolar contribution (ΔE_SA). The ΔE_MM term includes ΔE_ele (electrostatic) and ΔE_vdw (van der Waals) energies and was calculated by the sander module of AMBER18. The polar contribution was calculated by using the GB mode, with the solvent and the solute dielectric constants set to 80 and 4, respectively. Additionally, the nonpolar energy was estimated, with a solvent-probe radius of 1.4 Å: ΔE_SA = 0.0072 × ΔSASA, by the LCPO method based on the SASA model. For each ligand-target protein complex, 500 snapshots were taken from 30 to 50 ns on the MD trajectories. Further, the total binding energy of various ligands to target protein was decomposed into ligand-residue pairs using the MM/GBSA decomposition analysis by the mm_pbsa program in AMBER18. The energy contribution for each ligand-residue pair also has four parts: van der Waals term (ΔE_vdw), electrostatic term (ΔE_ele), polar desolvation term (ΔE_GB), and nonpolar desolvation term (ΔE_SA).
 
 
